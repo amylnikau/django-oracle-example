@@ -1,0 +1,28 @@
+.requiredField {
+    font-weight: bold;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+.btn-round {
+    border-radius: 50px;
+}
+
+table td.checkbox {
+    text-align: center;
+    vertical-align: middle;
+}
+
+input[type=checkbox] {
+    transform: scale(2);
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+select.form-control {
+    max-width: 400px;
+}

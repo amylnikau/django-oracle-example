@@ -1,0 +1,4 @@
+django>=1.10
+django-crispy-forms>=1.6.1
+django-bootstrap-breadcrumbs>=0.8.2
+cx_Oracle

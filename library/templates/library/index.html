@@ -1,0 +1,97 @@
+{% extends 'library/base.html' %}
+{% block content %}
+    {{ block.super }}
+    <div class="container">
+        <div class="alert alert-success alert-dismissible fade in" role="alert" style="display: none">
+            <button type="button" class="close" data-hide="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Well done! </strong><span></span>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <h3>Library</h3>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <div class="row">
+                    <h3>Queries</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:aliases' %}">Aliases</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:authors' %}">Authors</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:works' %}">Works</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:work-authors' %}">WorkAuthors</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:writings' %}">Writings</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:publications' %}">Publications</a>
+                </div>
+                <div class="list-group">
+                    <a class="list-group-item list-group-item-action"
+                       href="{% url 'library:translations' %}">Translations</a>
+                </div>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <div class="row">
+                    <h5>Find info about translations</h5>
+                    <form class="form-inline" action="{% url 'library:query' %}" method="get">
+                        <div class="form-group">
+                            <input hidden name="query_type" value="1"/>
+                            <label for="inputName">Surname</label>
+                            <input name="surname" type="text" class="form-control" id="inputName" placeholder="Smith"
+                                   required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Find</button>
+                    </form>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary btn-block" href="{% url 'library:query' %}?query_type=2" role="button">Find
+                        authors with two and more aliases</a>
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary btn-block" href="{% url 'library:query' %}?query_type=3" role="button">Find
+                        count of works for each author</a>
+                </div>
+                <div class="row">
+                    <h3>Triggers</h3>
+                </div>
+                <div class="row"></div>
+                <div class="row">
+                    <label class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="trigger1"
+                               {% if trigger_status.0 %}checked{% endif %}> Trigger 1
+                    </label>
+                    <label class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="trigger2"
+                               {% if trigger_status.1 %}checked{% endif %}> Trigger 2
+                    </label>
+                    <label class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="trigger3"
+                               {% if trigger_status.2 %}checked{% endif %}> Trigger 3
+                    </label>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

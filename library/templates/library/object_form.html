@@ -1,0 +1,33 @@
+{% extends 'library/objects.html' %}
+{% load crispy_forms_tags %}
+{% load django_bootstrap_breadcrumbs %}
+{% block breadcrumbs %}
+    {{ block.super }}
+    {% breadcrumb 'Add '|add:model_name '' %}
+{% endblock %}
+{% block content %}
+    {% render_breadcrumbs %}
+    <div class="container">
+        <div class="row">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>{{ message.level_tag|title }}: </strong> {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <form method="post">
+                    {% crispy form form.helper %}
+                    <input class="btn btn-outline-primary pull-xs-right" type="submit" value="Save"/>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
